@@ -1,18 +1,18 @@
 <template>
   <div>
-    <button class="ui red basic button">Red</button>
-    <button class="ui orange basic button">Orange</button>
-    <button class="ui yellow basic button">Yellow</button>
-    <button class="ui olive basic button">Olive</button>
-    <button class="ui green basic button">Green</button>
-    <button class="ui teal basic button">Teal</button>
-    <button class="ui blue basic button">Blue</button>
-    <button class="ui violet basic button">Violet</button>
-    <button class="ui purple basic button">Purple</button>
-    <button class="ui pink basic button">Pink</button>
-    <button class="ui brown basic button">Brown</button>
-    <button class="ui grey basic button">Grey</button>
-    <button class="ui black basic button">Black</button>
+    <FuiButton color=red basic>Red</FuiButton>
+    <FuiButton color=orange basic>Orange</FuiButton>
+    <FuiButton color=yellow basic>Yellow</FuiButton>
+    <FuiButton color=olive basic>Olive</FuiButton>
+    <FuiButton color=green basic>Green</FuiButton>
+    <FuiButton color=teal basic>Teal</FuiButton>
+    <FuiButton color=blue basic>Blue</FuiButton>
+    <FuiButton color=violet basic>Violet</FuiButton>
+    <FuiButton color=purple basic>Purple</FuiButton>
+    <FuiButton color=pink basic>Pink</FuiButton>
+    <FuiButton color=brown basic>Brown</FuiButton>
+    <FuiButton color=grey basic>Grey</FuiButton>
+    <FuiButton color=black basic>Black</FuiButton>
   </div>
 </template>
 
@@ -20,7 +20,7 @@
 export default {
   name: 'ElementButtonBasic3',
   info: {
-    converted: false,
+    converted: true,
     elementType: 'elements',
     element: 'button',
     title1: 'Types',

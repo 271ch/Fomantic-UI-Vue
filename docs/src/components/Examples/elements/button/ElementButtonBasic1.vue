@@ -1,9 +1,9 @@
 <template>
   <div>
-    <button class="ui basic button">
-      <i class="icon user"/>
+    <FuiButton basic>
+      <FuiIcon name=user></FuiIcon>
       Add Friend
-    </button>
+    </FuiButton>
   </div>
 </template>
 
@@ -11,14 +11,14 @@
 export default {
   name: 'ElementButtonBasic1',
   info: {
-    converted: false,
+    converted: true,
     elementType: 'elements',
     element: 'button',
     title1: 'Types',
     title2: 'Basic',
     description: 'A basic button is less pronounced',
     model: '    <button class="ui basic button">\n' +
-      '      <i class="icon user"/>\n' +
+      '      <i class="user icon"/>\n' +
       '      Add Friend\n' +
       '    </button>\n',
   },

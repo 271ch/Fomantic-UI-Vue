@@ -19,16 +19,17 @@ export default {
     Mixins.PSocial,
     Mixins.PPrimSecTer,
     Mixins.PSize,
-    Mixins.getMixinTag(['button'], 'div'),
+    Mixins.getMixinTag(['div'], 'button'),
   ],
   props: {
-    notFocusable: {
+    focusable: {
       type: Boolean,
-      description: 'The button is not keyboard accessible (default is focusable).',
+      description: 'The button is keyboard accessible (default is focusable for button and not focusable for div).',
     },
     animated: {
-      type: Boolean,
-      description: 'A button can animate to show hidden content.',
+      type: [Boolean, String],
+      description: 'A button can animate (variations fade, vertical) to show hidden content.',
+      default: false,
     },
     labeled: {
       type: String,
@@ -43,12 +44,12 @@ export default {
       description: 'A button can have only an icon.',
     },
     labeledIcon: {
-      type: String,
+      type: [Boolean, String],
       description: 'A button can use an icon as a label.',
       validator: (value) => {
-        return !value || Enum.LeftRight.check(value);
+        return value === false || value === true || Enum.LeftRight.check(value);
       },
-      default: '',
+      default: false,
     },
     basic: {
       type: Boolean,
@@ -122,7 +123,7 @@ export default {
   },
   methods: {
     getTabindex: function () {
-      if (this.tag !== 'button' && !this.notFocusable) {
+      if (this.tag === 'div' && this.focusable) {
         return '0';
       } else {
         return false;
@@ -130,16 +131,17 @@ export default {
     },
     classes: function () {
       return u.concatClasses(
+        'ui',
         this.positive && 'positive',
         this.negative && 'negative',
         this.fluid && 'fluid',
         this.circular && 'circular',
-        'ui',
         this.attached,
         this.attached && 'attached',
         this.compact && 'compact',
-        this.animated && 'animated',
-        this.icon && 'icon',
+        this.animated === true && 'animated',
+        this.animated === 'fade' && 'animated fade',
+        this.animated === 'vertical' && 'vertical animated',
         this.inverted && 'inverted',
         this.color,
         ...this.getClassesEmphasis(),
@@ -147,13 +149,14 @@ export default {
         this.basic && 'basic',
         this.labeled == 'left' && this.labeled,
         this.labeled && 'labelled',
-        this.labelledIcon == 'right' && this.labelledIcon,
-        this.labelledIcon && 'labeled icon',
+        (this.labeledIcon === true || this.labeledIcon === 'left') && 'labeled icon',
+        this.labeledIcon === 'right' && 'right labeled icon',
         this.active && 'active',
         this.disabled && 'disabled',
         this.loading && 'loading',
         ...this.getClassesSocial(),
         ...this.getClassesSize(),
+        this.icon && 'icon',
         this.floated,
         this.floated && 'floated',
         this.toggle && 'toggle',
